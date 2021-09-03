@@ -1,0 +1,41 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const loginGET = require("../controllers-get/login");
+const registerGET = require("../controllers-get/register");
+const allArticle = require("../controllers-get/all-article");
+const error404 = require("../controllers-get/error");
+const article = require("../controllers-get/article");
+const create = require("../controllers-get/create");
+const edit = require("../controllers-get/edit");
+const deleteContent = require("../controllers-get/delete");
+const searchResult = require("../controllers-get/search-result");
+const logout = require("../controllers-get/logout");
+const index = require("../controllers-get/index");
+const regPost = require("../controller-post/regPost");
+const createPost = require("../controller-post/createPost");
+const loginPOST = require("../controller-post/loginPost");
+const valCheck = require("../controllers-get/valcheck");
+const editPost = require("../controller-post/editPost");
+const deletePost = require("../controller-post/deletePost");
+
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+module.exports = (app) => {
+	// app.use(bodyParser.json());
+	// app.use(bodyParser.urlencoded({ extended: true }));
+	app.get("/", loginGET);
+	app.get("/reg", registerGET);
+	app.get("/allArticle", allArticle);
+	app.get("/edit/:id", edit);
+	app.get("/delete/:id", deleteContent);
+	app.get("/create", urlencodedParser, create);
+	app.get("/search", searchResult);
+	app.get("/index", index);
+	app.get("/article/:id", article);
+	app.get("/logout", logout);
+	app.post("/reg", urlencodedParser, regPost);
+	app.post("/create", urlencodedParser, valCheck, createPost);
+	app.post("/", urlencodedParser, valCheck, loginPOST);
+	app.post("/edit/:id", urlencodedParser, editPost);
+	app.post("/delete/:id", deletePost);
+};

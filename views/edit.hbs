@@ -1,0 +1,60 @@
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Wiki</title>
+		<link rel="stylesheet" href="/css/site.css" />
+	</head>
+
+	<body>
+		<div>
+			<aside>
+				<div class="center">
+					<img class="logo" src="img/logo.png" alt="logo" />
+				</div>
+
+				<nav>
+					<a href="/index">Main Page</a>
+					<a href="/allArticle">All Articles</a>
+					<form>
+						<input type="text" />
+						<input type="submit" value="Search" />
+					</form>
+					<a href="/create">Create New Article</a>
+				</nav>
+			</aside>
+			<div id="container">
+				<header>
+					<a href="/">Login</a>
+					<a href="/reg">Register</a>
+					<span>Welcome, Bob!</span>
+					<a href="/logout">[Logout]</a>
+				</header>
+				<main>
+					<h1>Welcome to My Hero FanWiki!</h1>
+					<section>
+						<h2>Edit article
+						</h2>
+						<div class="spacer">
+							<form method="POST">
+								<label>Article title</label>
+								{{#with contents}}
+									<h3>{{title}}</h3>
+									<label>Content</label>
+									<textarea>
+										{{content}}
+									</textarea>
+								{{/with}}
+								<input type="submit" value="Submit" />
+							</form>
+						</div>
+					</section>
+				</main>
+				<footer>
+					KingUni Wiki &copy; 2020
+				</footer>
+			</div>
+		</div>
+	</body>
+
+</html>
